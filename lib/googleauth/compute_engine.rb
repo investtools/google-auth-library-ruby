@@ -112,7 +112,7 @@ module Google
           case resp.status
           when 200
             content_type = resp.headers["content-type"]
-            if content_type == "text/html"
+            if content_type == "application/text"
               { (target_audience ? "id_token" : "access_token") => resp.body }
             else
               Signet::OAuth2.parse_credentials resp.body, content_type
